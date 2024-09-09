@@ -1,0 +1,34 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    font-family: Arial, sans-serif;
+    overflow: hidden; 
+}
+
+.container {
+    text-align: center;
+    color: #ffffff;
+}
+
+.animated-text h1 {
+    font-size: 3rem;
+    animation: fadeIn 2s ease-out, bounce 2s 2s ease-in-out;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Add Transaction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f6f7f7, #eef1f5);
+        }
+        .navbar {
+            background-color: rgba(75, 86, 99, 0.8);
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background-color: rgba(207, 231, 249, 0.9); 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #343a40; 
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #495057; /* Slightly darker gray */
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #495057;
+            background-color: rgba(255, 255, 255, 0.8); 
+        }
+        .form-group input:focus {
+            border-color: #80bdff;
+            outline: none;
+            background-color: rgba(255, 255, 255, 1); 
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #2b2f33;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-submit:hover {
+            background-color: #2e3236;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/register">Home</a>
+        <a href="/employees">Employees</a>
+        <a href="/add_transactions">Transaction</a>
+        <a href="/history">History</a>
+        <a href="/attendance">Attendance</a>
+        <a href="/">Signout</a>
+    </div>
+
+    <div class="container">
+        <h2><i class="fa-solid fa-money-bill-transfer"></i>Add Transaction</h2>
+        <form action="/transactions" method="post">
+            <div class="form-group">
+                <label for="transactionId">Transaction ID</label>
+                <input type="number" id="transactionId" name="transactionId" required>
+            </div>
+            <div class="form-group">
+                <label for="employeeId">Employee ID</label>
+                <input type="number" id="employeeId" name="employeeId" required>
+            </div>
+            <div class="form-group">
+                <label for="month">Month</label>
+                <input type="date" id="month" name="month" required>
+            </div>
+            <button type="submit" class="btn-submit">Add Transaction</button>
+        </form>
+    </div>
+</body>
+</html>

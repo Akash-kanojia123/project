@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment History</title>
+    <style>
+        body {
+            background-color: #ebf0f5;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background: linear-gradient(to right, #151617, #bcd9f6);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 100px;
+        }
+        thead th {
+            background-color: #505254;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        tbody td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 104px;
+            color: #2a4158;
+        }
+        .container {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #345855;
+            color: rgb(187, 215, 228);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .download-btn:hover {
+            background-color: #2a4158;
+            transform: scale(1.05);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/employee/home">Home</a></li>
+            <li><a href="/employee/salary">Salary</a></li>
+            <li><a href="/employee/payment-history">Payment History</a></li>
+            <li><a href="/employee/logout">Signout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2><u>Payment History</u></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>TID</th>
+                    <th>EID</th>
+                    <th>Month</th>
+                    <th>Amount</th>
+                    <th>Payslip</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(transaction => { %>
+                    <tr>
+                        <td><%= transaction.tid %></td>
+                        <td><%= transaction.eid %></td>
+                        <td><%= transaction.month %></td>
+                        <td><%= transaction.amount %></td>
+                        <td class="download-btn">
+                            <a class="download-btn" href="/generate-pdf/<%= transaction.eid %>">
+                                Download
+                            </a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

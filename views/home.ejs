@@ -1,0 +1,44 @@
+<body style="background-color: #e5ecf4; margin: 0; font-family: Arial, sans-serif;">
+
+    <nav style="background: linear-gradient(to right, #151617, #edf0f3); position: fixed; width: 100%; top: 0; z-index: 1000; padding: 10px 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center;">
+            <li style="margin: 0 15px;"><a href="/employee/home" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Home</a></li>
+            <li style="margin: 0 15px;"><a href="/employee/salary" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Salary</a></li>
+            <li style="margin: 0 15px;"><a href="/employee/payment-history" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Payment History</a></li>
+            <li style="margin: 0 15px;"><a href="/employee/logout" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Signout</a></li>
+        </ul>
+    </nav>
+    
+    <div style="display: flex; justify-content: space-between; margin-top: 100px; padding: 20px; width: 80%; margin-left: auto; margin-right: auto;">
+       
+        <div style="background-color: #f8ebb7; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); flex: 1; margin-right: 10px;">
+            <h2 style="font-size: 26px; font-weight: bold; color: #cc7a00; text-transform: uppercase; margin-bottom: 20px; position: relative;">
+                <i class="fa-solid fa-person"></i>
+                Personal Details
+                <span style="display: block; width: 50px; height: 4px; background-color: #cc7a00; margin-top: 8px; border-radius: 2px;"></span>
+            </h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="border: 1px solid #181212; padding: 10px; margin-bottom: 5px;">Name: <%= employee.name %></li>
+                <li style="border: 1px solid #0c0909; padding: 10px; margin-bottom: 5px;">Gender: <%= employee.gender %></li>
+                <li style="border: 1px solid #1f1919; padding: 10px; margin-bottom: 5px;">Date of Birth: <%= employee.dob %></li>
+                <li style="border: 1px solid #0f0a0a; padding: 10px; margin-bottom: 5px;">Phone: <%= employee.phone %></li>
+                <li style="border: 1px solid #120f0f; padding: 10px; margin-bottom: 5px;">Address: <%= employee.address %></li>
+            </ul>
+        </div>
+    
+       
+        <div style="background-color: #b3d9ff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); flex: 1; margin-left: 10px;">
+            <h2 style="font-size: 26px; font-weight: bold; color: #0059b3; text-transform: uppercase; margin-bottom: 20px; position: relative;">
+                Employment Details
+                <span style="display: block; width: 50px; height: 4px; background-color: #0059b3; margin-top: 8px; border-radius: 2px;"></span>
+            </h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="border: 1px solid #100e0e; padding: 10px; margin-bottom: 5px;">Employee ID: <%= employee.eid %></li>
+                <li style="border: 1px solid #100f0f; padding: 10px; margin-bottom: 5px;">Department: <%= employee.department %></li>
+                <li style="border: 1px solid #090808; padding: 10px; margin-bottom: 5px;">Designation: <%= employee.designation %></li>
+                <li style="border: 1px solid #080808; padding: 10px; margin-bottom: 5px;">Date of Joining: <%= employee.doj %></li>
+            </ul>
+        </div>
+    </div>
+    
+</body>

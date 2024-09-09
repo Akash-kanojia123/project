@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .captcha-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="captcha-container">
+        <h2>CAPTCHA Verification</h2>
+        <form action="/verify-captcha" method="POST">
+            <div>
+                <img src="data:image/svg+xml;base64,<%= Buffer.from(captcha).toString('base64') %>" alt="CAPTCHA">
+            </div>
+            <div>
+                <input type="text" name="captcha" placeholder="Enter CAPTCHA" required>
+            </div>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<body style="background-color: #e9f1fa; margin: 0; font-family: Arial, sans-serif;">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+   
+    <nav style="background: linear-gradient(to right, #151617, #b7d7f8); position: fixed; width: 100%; top: 0; z-index: 1000; padding: 10px 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center;">
+            <li style="margin: 0 15px;">
+                <a href="/employee/home" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Home</a>
+            </li>
+            <li style="margin: 0 15px;">
+                <a href="/employee/salary" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Salary</a>
+            </li>
+            <li style="margin: 0 15px;">
+                <a href="/employee/payment-history" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Payment History</a>
+            </li>
+            <li style="margin: 0 15px;">
+                <a href="/employee/logout" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; padding: 8px 16px; border-radius: 4px; transition: background-color 0.3s ease;">Signout</a>
+            </li>
+        </ul>
+    </nav>
+
+   
+    <div style="margin-top: 100px; padding: 20px; width: 80%; margin-left: auto; margin-right: auto;">
+        <h2 style="font-size: 26px; font-weight: bold; color: #0059b3; text-transform: uppercase; margin-bottom: 20px; position: relative;">
+            <i class="fa-solid fa-sack-dollar"></i>
+            Salary Details
+            <span style="display: block; width: 50px; height: 4px; background-color: #0059b3; margin-top: 8px; border-radius: 2px;"></span>
+        </h2>
+        <ul style="list-style: none; padding: 0; display: flex; justify-content: space-between;">
+          
+            <div style="flex: 1; background-color: #f0f8ff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-right: 10px;">
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">Base Salary: <%= employee.base_salary %></li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">HRA: <%= employee.hra %></li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">DA: <%= employee.da %></li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">MA: <%= employee.ma %></li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">Total Salary: <%= totalSalary %></li>
+            </div>
+
+          
+            <div style="flex: 1; background-color: #f0f8ff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-left: 10px;">
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">Salary After Deductions: </li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">Tax Deduction: <%= employee.tax_deduction %></li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">Provident Fund: <%= employee.provident_fund %></li>
+                <li style="border-bottom: 1px solid #ccc; padding: 10px 0;">Total after Deduction: <%= deductionamount %></li>
+            </div>
+        </ul>
+    </div>
+
+</body>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Transaction History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            transition: 0.3s;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/register">Home</a>
+        <a href="/employees">Employees</a>
+        <a href="/add_transactions">Transaction History</a>
+        <a href="/history">history</a>
+        <a href="/attendance">Attendance</a>
+        <a href="/">Signout</a>
+    </div>
+
+    <div class="container">
+        <h2><i class="fa-solid fa-clock-rotate-left"></i>Transaction History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Employee Name</th>
+                    <th>Amount</th>
+                    <th>Month</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% transactions.forEach(transaction => { %>
+                    <tr>
+                        <td><%= transaction.tid %></td>
+                        <td><%= transaction.name %></td>
+                        <td><%= transaction.amount %></td>
+                        <td><%= transaction.month %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

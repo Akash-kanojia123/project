@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("so.jpg");
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(5, 5, 5, 0.1); 
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .login-container {
+            background-color: rgba(44, 42, 42, 0.8); 
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 94%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #161616;
+            background-color: rgb(165, 164, 164, 0.3);
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"] {
+            width: 98%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #0e0d0d;
+            background-color: #ead474;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #4e5e52;
+        }
+        #userError  {
+            display: none;
+            color: red;
+        }
+        #passError  {
+            display: none;
+            color: red;
+        }
+        ::placeholder {
+            color: rgb(241, 236, 236);
+            font-size: 20px;
+            opacity: 1; 
+        }
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #ead474;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        .fa-eye:before {
+    content: "\f06e";
+    position: relative;
+    top: -38px;
+    left: 360px;
+}
+.fa-eye-slash:before {
+    content: "\f070";
+    position: relative;
+    top: -36px;
+    left: 366px;
+}
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div style="text-align: center; font-size: 30px; color: rgb(245, 239, 239); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+            Payroll Management System
+        </div>
+        <h2 style="color: rgb(247, 243, 243);"><i class="fa-solid fa-right-to-bracket"></i> Login</h2>
+        <form id="loginForm" method="POST" onsubmit="return validateForm()">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <span id="userError">Check  username it must be invalid</span>
+            <input type="password" id="password" name="password" placeholder="Password" required >
+            <i class="fa-solid fa-eye password-toggle" onclick="togglePasswordVisibility()"></i>
+            <span id="passError">Check  password it must be invalid</span>
+            <input type="hidden" id="loginType" name="loginType" value="">
+            <br>
+            <div class="g-recaptcha" data-sitekey="6LeYRDEqAAAAACX4HQ9Jegjly2ppu4mshOKWXZOO" style="background-color:rgba(44, 42, 42, 0);"></div>
+            <br>
+            <input type="submit" id="adminLoginButton" value="Admin Login" onclick="setLoginType('admin')"><br><br>
+            <input type="submit" id="employeeLoginButton" value="Employee Login" onclick="setLoginType('employee')">
+            <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+        </form>
+    </div>
+    <script>
+      let currentLoginType = '';
+
+function setLoginType(type) {
+    currentLoginType = type;  
+    document.getElementById('loginType').value = type;  
+    document.getElementById('loginForm').action = (type === 'admin') ? '/admin/login' : '/employee/login';
+    
+    if (validateForm()) {
+        document.getElementById('loginForm').submit();
+    }
+}
+
+function validateForm() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let userError = document.getElementById('userError');
+
+    userError.style.display = "none";
+
+    if (currentLoginType === 'admin') {
+        if (username!='admin')
+        {
+            userError.textContent='Invalid  username';
+            userError.style.display = "block";
+        setTimeout(() => 
+        {
+            userError.style.display = "none";
+        }, 2500);       
+           return false; }
+        if(password!='admin123')
+        {
+           passError.textContent='Wrong password';
+           passError.style.display = "block";
+        setTimeout(() => 
+        {
+            userError.style.display = "none";
+        }, 2500);   
+        return false; }
+        if( username === "") 
+        {
+            userError.textContent="username is empty";
+            userError.style.display = "block";
+        setTimeout(() => 
+        {
+            userError.style.display = "none";
+        }, 1500);   
+        return false; }
+        if( username.length < 5 )
+        {
+           userError.textContent = "username must be greater than 5 characters long.";
+           userError.style.display = "block";
+        setTimeout(() => 
+        {
+            userError.style.display = "none";
+        }, 2500);   
+        return false;  }
+       
+        if( password.length < 5) 
+        {
+            passError.textContent = "password credentials must be at least 5 characters long.";
+
+            passError.style.display = "block";
+        setTimeout(() => 
+         {
+            userError.style.display = "none";
+         }, 2500);   
+         return false;  }
+    
+        
+    } else if (currentLoginType === 'employee') {
+      
+        if( username === "") {
+        userError.textContent="username is empty";
+        userError.style.display = "block";
+        setTimeout(() => {
+            userError.style.display = "none";
+        }, 1500);  return false;   }
+        if( username.length < 5 ){
+        userError.textContent = "username must be greater than 5 characters long.";
+        userError.style.display = "block";
+        setTimeout(() => {
+            userError.style.display = "none";
+        }, 2500);  return false;   }
+       
+        if( password.length < 8) {
+            passError.textContent = "password credentials must be at least 5 characters long.";
+
+            passError.style.display = "block";
+            setTimeout(() => {
+            userError.style.display = "none";
+        }, 2500);   
+            return false;}
+    } else {
+        userError.textContent = "Please select a login type.";
+        userError.style.display = "block";
+        return false;
+    }
+
+    var captchaResponse = grecaptcha.getResponse();
+    if (captchaResponse.length === 0) {
+        alert('Please complete the CAPTCHA before logging in.');
+        return false;
+    }
+    
+
+
+    return true; 
+}
+function togglePasswordVisibility() {
+            let passwordInput = document.getElementById("password");
+            let passwordToggle = document.querySelector(".password-toggle");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+            
+        
+    </script>
+</body>
+</html>
