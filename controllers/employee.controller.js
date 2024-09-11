@@ -133,7 +133,7 @@ exports.register = [
                 })
                 .then(message => {
                     console.log('Registration SMS sent:', message.sid);
-                    res.redirect('/employees');
+                 res.redirect('views/employees');
                 })
                 .catch(error => {
                     console.error('Error sending registration SMS:', error);
