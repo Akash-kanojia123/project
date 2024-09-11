@@ -1,8 +1,17 @@
-var mysql=require("mysql2");
-var con=mysql.createConnection({
-    host:"localhost",
-    user:"Akashkanojia",
-    password:"kumar@123",
-    database:"payroll"
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+  host: '127.0.0.1',
+  port: 3306,
+  user: 'Akashkanojia',
+  password: 'kumar@123',
+  database: 'payroll'
 });
-module.exports=con;
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the database');
+});
